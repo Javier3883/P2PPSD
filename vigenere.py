@@ -1,6 +1,3 @@
-with open("1.5_fragmentoPrueba.txt", "r", encoding="utf-8") as f:
-    prueba = f.read()
-
 
 def matriz_vigenere():
     alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -49,17 +46,25 @@ def programa(texto_cifrar):
 
     return resultado_cifrado 
 
-matriz = matriz_vigenere()
+"""
+if __name__ == "__main__":
+        
+    with open("1.5_fragmento1.txt", "r", encoding="utf-8") as f:
+        texto = f.read()
 
 
-print("Matriz de Vigenere: ")
-for fila in matriz:
-    print(fila)
+    matriz = matriz_vigenere()
+    print("Matriz de Vigenere: ")
+    for fila in matriz :
+        print(fila)
+    print("\n")
 
-print("\n")
-print("Algoritmo cifrado: ")
-print("\n")
-print(programa(prueba))
+    print("Algoritmo cifrado: ")
+    print("\n")
+    print("Clave: \"ada\"")
+    cifrado = programa(texto)
+    print(cifrado)
 
-
-
+    with open("1.5_fragmento3_cif.txt", "w") as archivo :
+        archivo.write(cifrado)
+"""
