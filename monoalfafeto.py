@@ -85,7 +85,7 @@ def cifrado_monoalfabetico(texto):
             resultado += dic[letra]
 
 
-    print("\nDiccionario de sustitución (ordenado A → Z):")
+    print("\nDiccionario de sustitución:")
     for clave in sorted(dic.keys()):
         print(clave, "--", dic[clave])
 
