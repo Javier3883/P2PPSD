@@ -1,5 +1,6 @@
-
+import os
 import sys
+
 if "--help" in sys.argv or "-h" in sys.argv:
     print(
         "Este programa implementa un cifrado monoalfabético con un pseudoaleatorio basado en una semilla proporcionada por el usuario.\n"
@@ -34,7 +35,7 @@ else:
 
 
 
-def cifrado_monoalfabetico(texto):
+def cifrado_monoalfabeto(texto):
     texto = texto.upper()
     alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -91,7 +92,15 @@ def cifrado_monoalfabetico(texto):
 
     return resultado
 
+if __name__ == "__main__" :
+    
+    print("Clave entera:\t\"123\"")
+    nombre = os.path.basename(sys.argv[1])
+    nombre = os.path.splitext(nombre)[0]
 
-cifrado = cifrado_monoalfabetico(texto)
+    cifrado = cifrado_monoalfabeto(texto)
 
-print("\nTexto cifrado:\n", cifrado)
+    print("\nTexto cifrado:\n", cifrado)
+
+    with open(f"{nombre}_cif.txt", "w") as archivo :
+        archivo.write(cifrado)
