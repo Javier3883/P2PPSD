@@ -157,13 +157,13 @@ if "--cifrar" in args:
     nombre    = os.path.splitext(os.path.basename(ruta))[0]
 
     mostrar_matriz(matriz, semilla, desp)
-    print("  Archivo    : " + ruta)
-    print("  Original   : " + texto)
-    print("  Cifrado    : " + resultado)
+    print("\n  Archivo    : " + ruta)
+    print("\n  Original   : " + texto)
+    print("\n  Cifrado    : " + resultado)
 
     with open(f"{nombre}_cif.txt", "w") as archivo:
         archivo.write(resultado)
-    print("  Guardado   : {}_cif.txt".format(nombre))
+    print("\n  Guardado   : {}_cif.txt".format(nombre))
     print()
 
 elif "--descifrar" in args:
@@ -179,13 +179,13 @@ elif "--descifrar" in args:
     nombre    = os.path.splitext(os.path.basename(ruta))[0]
 
     mostrar_matriz(matriz, semilla, desp)
-    print("  Archivo    : " + ruta)
-    print("  Cifrado    : " + texto)
-    print("  Descifrado : " + resultado)
+    print("\n  Archivo    : " + ruta)
+    print("\n  Cifrado    : " + texto)
+    print("\n  Descifrado : " + resultado)
 
     with open(f"{nombre}_dec.txt", "w") as archivo:
         archivo.write(resultado)
-    print("  Guardado   : {}_dec.txt".format(nombre))
+    print("\n  Guardado   : {}_dec.txt".format(nombre))
     print()
 
 else:
