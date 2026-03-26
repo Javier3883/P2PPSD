@@ -8,9 +8,9 @@ ALFABETO = list("ABCDEFGHIKLMNOPQRSTUVWXYZ")  # 25 letras, I=J
 def ayuda():
     print("""
 Uso:
-  python cifrado.py --seed <1|2> --desp <D> --cifrar   <archivo.txt>
-  python cifrado.py --seed <1|2> --desp <D> --descifrar <archivo.txt>
-  python cifrado.py --help
+  python G.N_monoalfabeto.py --seed <1|2> --desp <D> --cifrar   <archivo.txt>
+  python G.N_monoalfabeto.py --seed <1|2> --desp <D> --descifrar <archivo.txt>
+  python G.N_monoalfabeto.py --help
 
 Argumentos:
   --seed <1|2>            Transposicion de columnas de la matriz (por defecto: 2)
