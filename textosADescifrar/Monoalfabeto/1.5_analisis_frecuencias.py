@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 import sys
+import os
 
-try:
-    with open('1.5_fragmento1_cif.txt', 'r', encoding='utf-8') as archivo:
-        texto = archivo.read()
-except FileNotFoundError:
-    print("Error: El archivo no fue encontrado.")
-    sys.exit(1)
+def leer_txt(ruta):
+        if not ruta.endswith(".txt"):
+            print("Error: el archivo debe tener extension .txt")
+            sys.exit(1)
+        try:
+            with open(ruta, "r", encoding="utf-8") as f:
+                return f.read().rstrip("\n")
+        except FileNotFoundError:
+            print("Error: no se encontro el archivo '{}'".format(ruta))
+            sys.exit(1)
+
 
 
 def analisis_frecuencias(texto):
@@ -43,11 +49,11 @@ def trigrafos(texto):
     frecuencias = {t: (cant / total_trigrafos) * 100 for t, cant in frec.items()}
     return frecuencias
 
-def cuatrigrafos(texto):
+def tetragrafos(texto):
     frec = {}
     for i in range(len(texto) - 3):
-        cuatrigrafo = texto[i:i+4]
-        frec[cuatrigrafo] = frec.get(cuatrigrafo, 0) + 1
+        tetragrafo = texto[i:i+4]
+        frec[tetragrafo] = frec.get(tetragrafo, 0) + 1
     
     total_cuatrigrafos = sum(frec.values())
     frecuencias = {c: (cant / total_cuatrigrafos) * 100 for c, cant in frec.items()}
@@ -69,15 +75,26 @@ def obtener_valor(item):
 
 
 if __name__ == "__main__":
+
+    if len(sys.argv) != 2:
+        print("Uso: python script.py <ruta_al_archivo.txt>")
+        sys.exit(1)
+
+    ruta = sys.argv[1]
+
+    texto = leer_txt(ruta)
+    nombre = os.path.splitext(os.path.basename(ruta))[0]
+
+    print("\n  Archivo      : " + ruta)
+    print("\n  Original     : " + texto)
+
     resultado_frecuencias = analisis_frecuencias(texto)
     resultado_digrafos = analisis_digrafos(texto)
     resultado_trigrafos = trigrafos(texto)
-    resultado_cuatrigrafos = cuatrigrafos(texto)
+    resultado_tetragrafos = tetragrafos(texto)
     resultado_pentagrafos = pentagrafos(texto)
 
 
-    print("Texto cifrado:")
-    print(texto)
     
     print("\n--- Análisis de frecuencias ---\n")
 
@@ -93,9 +110,9 @@ if __name__ == "__main__":
     for trigrafo, porcentaje in sorted(resultado_trigrafos.items(), key=obtener_valor, reverse=True):
         print(f"{trigrafo}: {porcentaje:.2f}%")
 
-    print("\nFrecuencias de cuatrigrafos:")
-    for cuatrigrafo, porcentaje in sorted(resultado_cuatrigrafos.items(), key=obtener_valor, reverse=True):
-        print(f"{cuatrigrafo}: {porcentaje:.2f}%")
+    print("\nFrecuencias de tetragrafos:")
+    for tetragrafo, porcentaje in sorted(resultado_tetragrafos.items(), key=obtener_valor, reverse=True):
+        print(f"{tetragrafo}: {porcentaje:.2f}%")
     
     print("\nFrecuencias de pentagrafos:")
     for pentagrafo, porcentaje in sorted(resultado_pentagrafos.items(), key=obtener_valor, reverse=True):
